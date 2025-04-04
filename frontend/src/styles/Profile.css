@@ -1,0 +1,71 @@
+.profile-container {
+  text-align: center;
+  padding: 50px;
+  background: #fffbf0;
+}
+
+h1 {
+  color: #d35d6e;
+}
+
+.profile-card {
+  background: #ffe4d5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profile-card h2 {
+  color: #d35d6e;
+  margin-top: 10px;
+}
+
+.profile-card p {
+  color: #555;
+  margin: 5px 0;
+}
+
+.edit-profile-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #d35d6e;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+
+.edit-profile-btn:hover {
+  background: #b84c5a;
+}
+
+.sales-stats {
+  margin-top: 30px;
+  padding: 20px;
+  background: #ffd7ca;
+  border-radius: 10px;
+  width: 300px;
+  margin: 20px auto;
+}
+
+.sales-stats h2 {
+  color: #d35d6e;
+}
+
+.sales-stats p {
+  color: #555;
+}

@@ -1,0 +1,50 @@
+.events-container {
+  text-align: center;
+  padding: 50px;
+  background: #fffbf0;
+}
+
+h1 {
+  color: #d35d6e;
+}
+
+.events-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.event-card {
+  background: #ffe4d5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: left;
+}
+
+h2 {
+  color: #b84c5a;
+}
+
+p {
+  color: #333;
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.enroll-btn {
+  background: #d35d6e;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.enroll-btn:hover {
+  background: #b84c5a;
+}
