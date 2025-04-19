@@ -1,59 +1,82 @@
+/* Home.css */
+
 .home-container {
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
   text-align: center;
-  font-family: "Arial", sans-serif;
-  background: #fffbf0;
+  overflow: hidden;
 }
 
 .background-image {
-  background: url("/assets/background.jpg") no-repeat center center/cover;
-  height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url("../images/image.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   position: relative;
+  opacity: 100%;
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
 }
 
-h1 {
-  font-size: 2.5rem;
+.overlay h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-p {
+.overlay p {
   font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #dddddd;
+  max-width: 600px;
 }
 
-button {
-  background: #d35d6e;
-  color: white;
-  padding: 10px 20px;
+.overlay button {
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  padding: 14px 30px;
   font-size: 1rem;
-  margin-top: 15px;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-button:hover {
-  background: #b84c5a;
+.overlay button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(255, 65, 108, 0.4);
 }
 
 .about-section {
-  padding: 50px;
-  background: #fff1e0;
+  background: #0f0f0f;
+  padding: 80px 20px;
 }
 
 .about-section h2 {
-  color: #b84c5a;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
-footer {
-  background: #ffd7ca;
-  padding: 15px;
-  margin-top: 20px;
+.about-section p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #cccccc;
+  line-height: 1.6;
 }

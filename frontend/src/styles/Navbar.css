@@ -1,37 +1,52 @@
+/* Navbar container */
 .navbar {
+  background: linear-gradient(135deg, #ff4e50, #f9d423);
+  padding: 15px 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: #ffe4d5;
-  padding: 15px 20px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 10px rgba(255, 78, 80, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* Brand name */
 .nav-brand a {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: 700;
   text-decoration: none;
-  color: #b84c5a;
+  color: #f9fbb8;
 }
 
+/* Links list */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
-.nav-links li {
-  display: inline;
-}
-
-.nav-links a {
+/* Each nav item */
+.nav-links li a {
   text-decoration: none;
-  color: #b84c5a;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  transition: color 0.3s;
+  color: #e94e77;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
 }
 
-.nav-links a:hover {
-  color: #a03a4a;
+/* Hover effect */
+.nav-links li a:hover {
+  background: linear-gradient(to right, #ff4e50, #f9d423);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 78, 80, 0.3);
+}
+
+/* Active/Selected state - optional if you're using NavLink */
+.nav-links li a.active {
+  background: #ff4e50;
+  color: white;
 }

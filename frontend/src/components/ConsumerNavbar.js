@@ -1,19 +1,24 @@
+// components/ConsumerNavbar.js
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Navbar.css"; // Common styling for both navbars
+import "../styles/Navbar.css";
 
-const ConsumerNavbar = () => {
+const ConsumerNavbar = ({ onProfileClick }) => {
   return (
     <nav className="navbar">
       <div className="nav-brand">
         <Link to="/">ArtBridge</Link>
       </div>
       <ul className="nav-links">
-        <li><Link to="/shop">Shop</Link></li>
-        <li><Link to="/courses">Courses</Link></li>
-        <li><Link to="/cart">Cart</Link></li>
-        <li><Link to="/events">Events</Link></li>
-        <li><Link to="/profile">Profile</Link></li>
+        <li><Link to="/Consumer/ConsumerHome">Home</Link></li>
+        <li><Link to="/Consumer/Shop">Shop</Link></li>
+        <li><Link to="/Consumer/ConsumerCourses">Courses</Link></li>
+        <li><Link to="/Consumer/Cart">Cart</Link></li>
+        <li><Link to="/Consumer/Events">Events</Link></li>
+         <li>
+                  <Link to="#" onClick={onProfileClick}>Profile</Link>
+                </li>
+        {/* <li><button onClick={onProfileClick} className="profile-btn">Profile</button></li> */}
       </ul>
     </nav>
   );

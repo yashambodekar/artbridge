@@ -37,26 +37,33 @@ const Signup = () => {
     <div className="auth-container">
       <h2>Sign Up</h2>
       <form onSubmit={handleSignup}>
-        <div className="radio-group">
-          <label>
-            <input
-              type="radio"
-              value="Artisan"
-              checked={role === "Artisan"}
-              onChange={() => setRole("Artisan")} // Changed setUserType to setRole
-            />
+        <div className="role-toggle">
+          <input
+            type="radio"
+            id="artisan"
+            name="role"
+            value="Artisan"
+            checked={role === "Artisan"}
+            onChange={() => setRole("Artisan")}
+          />
+          <label htmlFor="artisan" className={role === "Artisan" ? "active" : ""}>
             Artisan
           </label>
-          <label>
-            <input
-              type="radio"
-              value="Consumer"
-              checked={role === "Consumer"}
-              onChange={() => setRole("Consumer")} // Changed setUserType to setRole
-            />
+
+          <input
+            type="radio"
+            id="consumer"
+            name="role"
+            value="Consumer"
+            checked={role === "Consumer"}
+            onChange={() => setRole("Consumer")}
+          />
+          <label htmlFor="consumer" className={role === "Consumer" ? "active" : ""}>
             Consumer
           </label>
         </div>
+
+
         <input
           type="text"
           placeholder="Name"

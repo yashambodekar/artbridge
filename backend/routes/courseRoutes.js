@@ -1,29 +1,44 @@
-// routes/courseRoutes.js
 const express = require("express");
-const Course = require("../models/Course");
-const { protect } = require("../middleware/authMiddleware");
 const router = express.Router();
+const { protect } = require("../middleware/authMiddleware");
+const mongoose = require("mongoose");
+const {
+  addCourse,
+  deleteCourse,
+  getMyCourses,
+  getAllCourses,
+  buyCourse,
+  getCourseById,
+  getPurchasedCourses,
+} = require("../controllers/courseController");
 
-// Add Course
-router.post("/add", protect, async (req, res) => {
-    const { name, image, price, description, mode } = req.body;
-    try {
-        const course = new Course({ artisan: req.user.id, name, image, price, description, mode });
-        await course.save();
-        res.status(201).json(course);
-    } catch (error) {
-        res.status(500).json({ message: "Server error" });
-    }
-});
+// Middleware to validate ObjectId
+const validateObjectId = (req, res, next) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: "Invalid ID format" });
+  }
+  next();
+};
 
-// Get Artisan's Courses
-router.get("/my-courses", protect, async (req, res) => {
-    try {
-        const courses = await Course.find({ artisan: req.user.id });
-        res.json(courses);
-    } catch (error) {
-        res.status(500).json({ message: "Server error" });
-    }
-});
+// ✅ Get all courses purchased by the consumer
+router.get("/purchased", protect, getPurchasedCourses);
+
+// ✅ Get courses of logged-in artisan
+router.get("/my", protect, getMyCourses);
+
+// ✅ Get all courses
+router.get("/AllCourses", getAllCourses);
+
+// ✅ Add a new course
+router.post("/", protect, addCourse);
+
+// ✅ Buy a course
+router.post("/buy/:courseId", protect, buyCourse);
+
+// ✅ Delete a course
+router.delete("/:id", protect, deleteCourse);
+
+// ✅ Get course by ID (must be the last route to avoid conflicts)
+router.get("/:id", validateObjectId, getCourseById);
 
 module.exports = router;

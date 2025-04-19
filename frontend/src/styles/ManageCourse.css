@@ -1,0 +1,37 @@
+.manage-course-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.upload-form {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.upload-form input,
+.upload-form button {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+}
+
+.file-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+}
+
+.file-list a {
+  color: #0077cc;
+  text-decoration: none;
+}

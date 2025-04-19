@@ -30,8 +30,18 @@ const AddCourse = () => {
     formData.append("image", course.image);
 
     try {
-      const response = await fetch("http://localhost:5000/api/courses", {
+
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Please log in to add a course.");
+        return;
+      }
+
+      const response = await fetch("http://localhost:5000/api/courses/add", {
         method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
         body: formData,
       });
 
@@ -39,7 +49,8 @@ const AddCourse = () => {
         alert("Course added successfully!");
         setCourse({ name: "", description: "", price: "", mode: "Online", image: null });
       } else {
-        alert("Error adding course!");
+        const err = await response.json();
+        alert("Error adding course!" + err.message || "Unknown error occurred.");
       }
     } catch (error) {
       console.error("Error:", error);

@@ -7,13 +7,22 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Sell from "./pages/Artisan/Sell";
 import Courses from "./pages/Artisan/Courses";
+import AddCourse from "./pages/Artisan/AddCourse";
+import AddProduct from "./pages/Artisan/AddProduct";
+import ConsumerCourses from "./pages/Consumer/ConsumerCourses";
+import ConsumerProfile from "./pages/Consumer/ConsumerProfile";
 import Cart from "./pages/Consumer/Cart";
 import Events from "./pages/Consumer/Events";
 import Shop from "./pages/Consumer/Shop";
+import ArtisanLayout from "./pages/Artisan/ArtisanLayout";
+import ConsumerLayout from "./pages/Consumer/ConsumerLayout";
 import Payment from "./pages/Consumer/Payment";
 import Footer from "./components/Footer";
-import ArtisanNavbar from "./components/ArtisanNavbar";
-import ConsumerNavbar from "./components/ConsumerNavbar";
+import Home from "./pages/Home";
+import CourseManage from "./pages/Artisan/CourseManage";
+import CourseView from "./pages/Consumer/CourseView";
+import BuyProduct from "./pages/Consumer/BuyProduct";
+import ProductConsumers from "./pages/Artisan/productConsumer";
 import "./styles/App.css";
 
 const getUserRole = () => {
@@ -23,33 +32,43 @@ const getUserRole = () => {
 
 function App() {
   const userRole = getUserRole();
+  console.log("Rendering App");
+  console.log("User Role:", userRole);
 
   return (
-    // <Router>
     <>
-      {userRole === "artisan" ? <ArtisanNavbar /> : userRole === "consumer" ? <ConsumerNavbar /> : null}
-
       <Routes>
         {/* Public Routes */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
 
-        {/* Protected Routes for Artisans */}
-        <Route element={<PrivateRoute allowedRoles={["artisan"]} />}>
-          <Route path="/Artisan/ArtisanHome" element={<ArtisanHome />} />
-          <Route path="/Artisan/Sell" element={<Sell />} />
-          <Route path="/Artisan/Courses" element={<Courses />} />
-          {/* <Route path="/Profile" element={<Profile />} /> */}
+        {/* Protected Routes for Artisans inside ArtisanLayout */}
+        <Route element={<PrivateRoute allowedRoles={["Artisan"]} />}>
+          <Route path="/Artisan" element={<ArtisanLayout />}>
+            <Route path="ArtisanHome" element={<ArtisanHome />} />
+            <Route path="Sell" element={<Sell />} />
+            <Route path="Courses" element={<Courses />} />
+            <Route path="AddProduct" element={<AddProduct />} />
+            <Route path="AddCourse" element={<AddCourse />} />
+            <Route path="ManageCourse/:courseId" element={<CourseManage />} />
+            <Route path="ProductConsumers/:productId" element={<ProductConsumers />} />
+          </Route>
         </Route>
 
         {/* Protected Routes for Consumers */}
-        <Route element={<PrivateRoute allowedRoles={["consumer"]} />}>
-          <Route path="/Consumer/ConsumerHome" element={<ConsumerHome />} />
-          <Route path="/Consumer/Shop" element={<Shop />} />
-          <Route path="/Consumer/Cart" element={<Cart />} />
-          <Route path="/Consumer/Events" element={<Events />} />
-          <Route path="/Consumer/Payment" element={<Payment />} />
+        <Route element={<PrivateRoute allowedRoles={["Consumer"]} />}>
+          <Route path="/Consumer" element={<ConsumerLayout />}>
+            <Route path="ConsumerHome" element={<ConsumerHome />} />
+            <Route path="ConsumerCourses" element={<ConsumerCourses />} />
+            <Route path="Cart" element={<Cart />} />
+            <Route path="Events" element={<Events />} />
+            <Route path="Shop" element={<Shop />} />
+            <Route path="Payment" element={<Payment />} />
+            <Route path="ConsumerProfile" element={<ConsumerProfile />} />
+            <Route path="ViewCourse/:courseId" element={<CourseView />} />
+            <Route path="buyproduct/:productId" element={<BuyProduct />} />
+          </Route>
         </Route>
       </Routes>
 
@@ -58,5 +77,4 @@ function App() {
   );
 }
 
-// hhgyutff
 export default App;

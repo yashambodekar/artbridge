@@ -27,17 +27,31 @@ const AddProduct = () => {
     formData.append("price", product.price);
     formData.append("image", product.image);
 
+   
+
     try {
-      const response = await fetch("http://localhost:5000/api/products", {
+
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Please log in to add a product.");
+        return;
+      }
+
+      const response = await fetch("http://localhost:5000/api/products/add", {
         method: "POST",
         body: formData,
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },  
       });
+
+      const data = await response.json();
 
       if (response.ok) {
         alert("Product added successfully!");
         setProduct({ name: "", description: "", price: "", image: null });
       } else {
-        alert("Error adding product!");
+        alert( data.message || "Error adding product!");
       }
     } catch (error) {
       console.error("Error:", error);

@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./../../styles/Shop.css"; // Create this CSS file
+import "./../../styles/Shop.css";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     // Fetch products from backend API
-    axios.get("http://localhost:5000/api/products")
+    axios.get("http://localhost:5000/api/products/AllProducts")
       .then(response => setProducts(response.data))
       .catch(error => console.error("Error fetching products:", error));
   }, []);
 
-  const addToCart = (product) => {
-    alert(`${product.name} added to cart!`);
-    // Later, integrate this with cart API
+  const addToCart = async (product) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await axios.post("http://localhost:5000/api/cart/add", 
+        { productId: product._id },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert(`${product.name} added to cart!`);
+    } catch (err) {
+      console.error("Failed to add to cart", err);
+      alert("Could not add to cart.");
+    }
   };
-
+  
   return (
     <div className="shop-container">
       <h1>Shop Products</h1>
@@ -24,10 +33,15 @@ const Shop = () => {
         {products.length > 0 ? (
           products.map((product) => (
             <div key={product._id} className="product-card">
-              <img src={product.image} alt={product.name} />
+              <img
+               src={product.image ? `http://localhost:5000/${product.image}` : "https://via.placeholder.com/150"}
+               alt={product.name}
+               className="product-image"
+              />
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p className="price">₹{product.price}</p>
+              <p>By: <strong>{product.artisan?.name || "Unknown"}</strong></p>
               <button onClick={() => addToCart(product)}>Add to Cart</button>
             </div>
           ))

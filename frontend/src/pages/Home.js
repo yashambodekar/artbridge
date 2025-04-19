@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./../../styles/Home.css"; // Make sure this CSS file exists
-import Footer from "./../components/Footer";
+import "./../styles/Home.css"; // Make sure this CSS file exists
+
 
 const Home = () => {
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ const Home = () => {
           by providing a seamless shopping experience.
         </p>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -54,6 +54,7 @@ const ConsumerProfile = () => {
 
         <div className="profile-buttons">
           <button className="orders-btn" onClick={() => navigate("/orders")}>Orders</button>
+          <button className="Logout" onClick={() => navigate("/Login")}>Login</button>
           <button className="courses-btn" onClick={() => navigate("/enrolled-courses")}>Enrolled Courses</button>
         </div>
       </div>

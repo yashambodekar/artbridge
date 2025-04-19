@@ -9,7 +9,10 @@ const UserSchema = new mongoose.Schema({
     password: String,
     profilePicture: String,
     soldProducts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
-    soldCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }]
+    soldCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
+    purchasedCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
+    
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.models.User || mongoose.model("User", UserSchema);
+

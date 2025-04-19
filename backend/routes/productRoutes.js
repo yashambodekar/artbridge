@@ -1,30 +1,24 @@
-// routes/productRoutes.js
 const express = require("express");
-const Product = require("../models/Product");
-const { protect } = require("../middleware/authMiddleware");
 const router = express.Router();
+const { protect } = require("../middleware/authMiddleware");
+const upload = require("../middleware/uploadMiddleware");
 
-// Add Product
-router.post("/add", protect, async (req, res) => {
-    const { name, image, price, description } = req.body;
-    try {
-        const product = new Product({ artisan: req.user.id, name, image, price, description });
-        await product.save();
-        res.status(201).json(product);
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({ message: "Server error" });
-    }
-});
+const {
+  addProduct,
+  deleteProduct,
+  getMyProducts,
+  getAllProducts,
+  buyProduct,
+  getProductConsumers,
+  getProductPrice,
+} = require("../controllers/productController");
 
-// Get Artisan's Products
-router.get("/my-products", protect, async (req, res) => {
-    try {
-        const products = await Product.find({ artisan: req.user.id });
-        res.json(products);
-    } catch (error) {
-        res.status(500).json({ message: "Server error" });
-    }
-});
+router.post("/add", protect, upload.single("image"), addProduct);
+router.delete("/delete/:id", protect, deleteProduct);
+router.get("/my-products", protect, getMyProducts);
+router.get("/AllProducts", getAllProducts);
+router.post("/buy", protect, buyProduct);
+router.get("/:productId/consumers", protect, getProductConsumers);
+router.get("/:productId/price", getProductPrice);
 
 module.exports = router;

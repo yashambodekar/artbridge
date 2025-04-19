@@ -6,7 +6,7 @@ const CourseSchema = new mongoose.Schema({
     image: String,
     price: Number,
     description: String,
-    mode: { type: String, enum: ["online", "offline"], required: true }
+    mode: { type: String, enum: ["online", "Offline"], required: true }
 });
 
 module.exports = mongoose.model("Course", CourseSchema);
