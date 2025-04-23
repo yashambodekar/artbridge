@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "./../components/Navbar"; // Import the Navbar component
 import "./../styles/OurArtisan.css";
 import defaultProfileIcon from "./../assets/profile.png";
 
@@ -21,10 +22,13 @@ const OurArtisans = () => {
 
   return (
     <div className="our-artisans-container">
+      {/* Navbar */}
+      <Navbar />
+
       <h1>Our Artisans</h1>
       <div className="artisan-grid">
         {artisans.map((artisan) => (
-          <div className="artisan-card" key={artisan.id}>
+          <div className="artisancard" key={artisan.id}>
             <img
               src={artisan.profilePicture || defaultProfileIcon}
               alt={artisan.name}

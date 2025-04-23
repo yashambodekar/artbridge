@@ -40,7 +40,7 @@
   margin: 0 auto;
 }
 
-.consumer-card {
+.consumercard {
   background-color: rgba(20, 20, 20, 0.8);
   border-radius: 15px;
   padding: 2rem;
@@ -56,12 +56,12 @@
   min-height: 200px;
 }
 
-.consumer-card:hover {
+.consumercard:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 40px rgba(155, 135, 245, 0.3);
 }
 
-.consumer-card h2 {
+.consumercard h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   background: linear-gradient(90deg, #9b87f5 0%, #d946ef 100%);
@@ -70,7 +70,7 @@
   color: transparent;
 }
 
-.consumer-card p {
+.consumercard p {
   color: #e0e0e0;
   font-size: 1rem;
   line-height: 1.6;
@@ -103,7 +103,7 @@
     font-size: 1rem;
   }
 
-  .consumer-card h2 {
+  .consumercard h2 {
     font-size: 1.5rem;
   }
 }

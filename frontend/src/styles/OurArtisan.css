@@ -1,13 +1,13 @@
 .our-artisans-container {
   padding: 2rem;
   text-align: center;
-  background-color: #f9f9f9;
+  background-color: #000000;
 }
 
 .our-artisans-container h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #333;
+  color: #73108c;
 }
 
 .artisan-grid {
@@ -16,7 +16,7 @@
   gap: 2rem;
 }
 
-.artisan-card {
+.artisancard {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -37,13 +37,13 @@
   margin-bottom: 1rem;
 }
 
-.artisan-card h2 {
+.artisancard h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: #333;
 }
 
-.artisan-card p {
+.artisancard p {
   font-size: 1rem;
   color: #666;
 }

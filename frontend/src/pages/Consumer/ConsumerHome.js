@@ -23,24 +23,19 @@ const ConsumerHome = () => {
 
       {/* Consumer Sections */}
       <div className="consumer-sections">
-        <div className="consumer-card" onClick={() => navigate("/Consumer/Shop")}>
+        <div className="consumercard" onClick={() => navigate("/Consumer/Shop")}>
           <h2>Shop</h2>
           <p>Explore a wide variety of handmade products crafted by artisans.</p>
         </div>
 
-        <div className="consumer-card" onClick={() => navigate("/Consumer/ConsumerCourses")}>
+        <div className="consumercard" onClick={() => navigate("/Consumer/ConsumerCourses")}>
           <h2>Courses</h2>
           <p>Learn new skills by enrolling in artisan-led courses.</p>
         </div>
 
-        <div className="consumer-card" onClick={() => navigate("/Consumer/Cart")}>
+        <div className="consumercard" onClick={() => navigate("/Consumer/Cart")}>
           <h2>Cart</h2>
           <p>View and manage the products you want to buy.</p>
-        </div>
-
-        <div className="consumer-card" onClick={() => navigate("/Consumer/Events")}>
-          <h2>Events</h2>
-          <p>Stay updated on upcoming artisan workshops and exhibitions.</p>
         </div>
       </div>
     </div>

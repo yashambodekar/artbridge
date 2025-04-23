@@ -84,10 +84,8 @@ const Courses = () => {
               <h3>{course.name}</h3>
               <p>{course.mode}</p>
               <p>Price: ₹{course.price}</p>
-              <p>Consumers: {course.consumersCount}</p>
-              <p>Total Earnings: ₹{course.earnings}</p>
 
-              <div className="course-buttons">
+              <div className="product-card button">
               <button onClick={() => navigate(`/Artisan/ManageCourse/${course._id}`)}>Manage Content</button>
                 <button className="delete-btn" onClick={() => handleDelete(course._id)}>Delete</button>
               </div>

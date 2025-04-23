@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./../styles/ProfileSidebar.css";
 
 const ProfileSidebar = ({ isOpen, onClose }) => {
   const [user, setUser] = useState(null);
-  const [courses, setCourses] = useState([]);
-  const navigate = useNavigate();
-
   useEffect(() => {
     if (!isOpen) return;
 
@@ -26,49 +22,9 @@ const ProfileSidebar = ({ isOpen, onClose }) => {
       }
     };
 
-    // const fetchCourses = async () => {
-    //   try {
-    //     const endpoint = user?.role === "Artisan"
-    //       ? "http://localhost:5000/api/artisans/my-courses-with-consumers"
-    //       : "http://localhost:5000/api/consumers/my-courses";
-
-    //     const res = await fetch(endpoint, {
-    //       headers: { Authorization: `Bearer ${token}` },
-    //     });
-
-    //     const data = await res.json();
-    //     if (res.ok) setCourses(data);
-    //   } catch (err) {
-    //     console.error("Error fetching courses:", err);
-    //   }
-    // };
 
     fetchProfile();
   }, [isOpen]);
-
-  useEffect(() => {
-    if (user) {
-      fetchCourses(); // Fetch courses once user is loaded
-    }
-
-    async function fetchCourses() {
-      try {
-        const token = localStorage.getItem("token");
-        const endpoint = user?.role === "Artisan"
-          ? "http://localhost:5000/api/users/my-courses-with-consumers"
-          : "http://localhost:5000/api/users/my-courses";
-
-        const res = await fetch(endpoint, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-
-        const data = await res.json();
-        if (res.ok) setCourses(data);
-      } catch (err) {
-        console.error("Error fetching courses:", err);
-      }
-    }
-  }, [user]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -76,14 +32,6 @@ const ProfileSidebar = ({ isOpen, onClose }) => {
     window.location.href = "/";
   };
 
-  const handleCourseClick = (courseId) => {
-    if (user.role === "Artisan") {
-      navigate(`/course/manage/${courseId}`);
-    } else {
-      navigate(`/course/view/${courseId}`);
-    }
-    onClose(); // Close sidebar after navigating
-  };
 
   return (
     <div className={`profile-sidebar ${isOpen ? "open" : ""}`}>
@@ -106,24 +54,6 @@ const ProfileSidebar = ({ isOpen, onClose }) => {
           <p><strong>Role:</strong> {user.role}</p>
           <p><strong>Contact:</strong> {user.contact || "N/A"}</p>
           <p><strong>Address:</strong> {user.address || "N/A"}</p>
-
-          <h3>{user.role === "Artisan" ? "Sold Courses" : "Purchased Courses"}</h3>
-          <ul>
-            {courses.length > 0 ? (
-              courses.map((course) => (
-                <li key={course._id} onClick={() => handleCourseClick(course._id)} style={{ cursor: "pointer" }}>
-                  {course.name} - ₹{course.price}
-                  {user.role === "Artisan" && (
-                    <span style={{ float: "right", color: "#777" }}>
-                      ({course.consumersCount || 0} enrolled)
-                    </span>
-                  )}
-                </li>
-              ))
-            ) : (
-              <li>No courses found.</li>
-            )}
-          </ul>
 
           <button className="logout-btn" onClick={handleLogout}>Logout</button>
         </div>

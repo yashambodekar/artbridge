@@ -14,7 +14,6 @@ const ConsumerNavbar = ({ onProfileClick }) => {
         <li><Link to="/Consumer/Shop">Shop</Link></li>
         <li><Link to="/Consumer/ConsumerCourses">Courses</Link></li>
         <li><Link to="/Consumer/Cart">Cart</Link></li>
-        <li><Link to="/Consumer/Events">Events</Link></li>
          <li>
                   <Link to="#" onClick={onProfileClick}>Profile</Link>
                 </li>

@@ -27,97 +27,6 @@ body {
   display: inline-block;
 }
 
-/* Navigation Bar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 4rem;
-  background-color: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-tabs {
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-tab {
-  padding: 0.5rem 1rem;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-tab::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #9b87f5 0%, #D946EF 100%);
-  transition: width 0.3s ease;
-}
-
-.nav-tab:hover::after,
-.nav-tab.active::after {
-  width: 100%;
-}
-
-/* .nav-tab.active {
-  color: #D946EF;
-} */
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-}
-
-.sign-in-button {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(90deg, #7E69AB 0%, #D946EF 100%);
-  border: none;
-  border-radius: 50px;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 15px rgba(123, 105, 171, 0.3);
-}
-
-.sign-in-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(217, 70, 239, 0.4);
-}
-
-.sign-in-icon {
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
-}
-
-.sign-in-button:hover .sign-in-icon {
-  transform: translateX(3px);
-}
-
 /* Hero Section */
 .hero-section {
   min-height: 50vh;
@@ -246,7 +155,7 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(90deg, #9b87f5 0%, #D946EF 100%);
+  background: linear-gradient(90deg, #9b87f5 0%, #e61ec4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

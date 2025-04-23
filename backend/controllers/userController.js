@@ -67,9 +67,54 @@ const getAllArtisans = async (req, res) => {
   }
 };
 
+
+// GET /api/artisan/stats - Fetch artisan statistics
+const getArtisanStats = async (req, res) => {
+  try {
+    const artisanId = req.user.id; // Assuming the artisan is authenticated
+
+    // Count the number of products and courses created by the artisan
+    const productsCreated = await Product.countDocuments({ artisan: artisanId });
+    const coursesCreated = await Course.countDocuments({ artisan: artisanId });
+
+    // Calculate the number of products sold
+    const productsSold = await Product.aggregate([
+      { $match: { artisan: artisanId } }, // Match products created by the artisan
+      { $unwind: "$soldTo" }, // Unwind the soldTo array
+      { $group: { _id: null, totalSold: { $sum: "$soldTo.quantity" } } }, // Sum up the quantities
+    ]);
+
+    // Calculate the number of courses sold
+    const coursesSold = await Course.aggregate([
+      { $match: { artisan: artisanId } }, // Match courses created by the artisan
+      {
+        $lookup: {
+          from: "users", // Reference the User collection
+          localField: "_id",
+          foreignField: "purchasedCourses",
+          as: "buyers",
+        },
+      },
+      { $project: { totalSold: { $size: "$buyers" } } }, // Count the number of buyers
+      { $group: { _id: null, totalSold: { $sum: "$totalSold" } } }, // Sum up the counts
+    ]);
+
+    res.status(200).json({
+      productsCreated,
+      coursesCreated,
+      productsSold: productsSold[0]?.totalSold || 0, // Default to 0 if no sales
+      coursesSold: coursesSold[0]?.totalSold || 0, // Default to 0 if no sales
+    });
+  } catch (error) {
+    console.error("Error fetching artisan stats:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   getMe,
   updateProfile,
   getAllArtisans,
+  getArtisanStats,
 };
 

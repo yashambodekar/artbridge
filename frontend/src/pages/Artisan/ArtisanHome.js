@@ -1,12 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./../../styles/ArtisanHome.css";
 
 const ArtisanHome = () => {
-  const stats = {
-    productsSold: 120,
-    coursesCreated: 5,
-  };
+  const [stats, setStats] = useState({
+    productsCreated: 0,
+    coursesCreated: 0,
+    productsSold: 0,
+    coursesSold: 0,
+  });
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const token = localStorage.getItem("token"); // Get the token from localStorage
+        const res = await axios.get("http://localhost:5000/api/users/artisan/stats", {
+          headers: {
+            Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+          },
+        });
+        setStats(res.data);
+        console.log("Artisan Stats:", res.data); // Debugging log
+      } catch (error) {
+        console.error("Error fetching artisan stats:", error);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   return (
     <div className="artisan-content">
@@ -16,20 +37,13 @@ const ArtisanHome = () => {
       {/* Artisan Statistics Section */}
       <div className="artisan-stats">
         <div className="stat-card">
-          <h3>Products Sold</h3>
-          <p>{stats.productsSold}</p>
+          <h3>Products Created</h3>
+          <p>{stats.productsCreated}</p>
         </div>
         <div className="stat-card">
           <h3>Courses Created</h3>
           <p>{stats.coursesCreated}</p>
         </div>
-      </div>
-
-      {/* Navigation Links */}
-      <div className="artisan-links">
-        <Link to="/Artisan/Sell" className="artisan-btn">Manage Products</Link>
-        <Link to="/Artisan/AddCourse" className="artisan-btn">Add Courses</Link>
-        <Link to="/orders" className="artisan-btn">View Orders</Link>
       </div>
     </div>
   );
