@@ -10,7 +10,7 @@ import AddCourse from "./pages/Artisan/AddCourse";
 import AddProduct from "./pages/Artisan/AddProduct";
 import ConsumerCourses from "./pages/Consumer/ConsumerCourses";
 import Cart from "./pages/Consumer/Cart";
-import Events from "./pages/Consumer/Events";
+import Events from "./pages/Events";
 import Shop from "./pages/Consumer/Shop";
 import ArtisanLayout from "./pages/Artisan/ArtisanLayout";
 import ConsumerLayout from "./pages/Consumer/ConsumerLayout";
@@ -22,6 +22,7 @@ import BuyProduct from "./pages/Consumer/BuyProduct";
 import ProductConsumers from "./pages/Artisan/productConsumer";
 import ArtisanSignup from "./pages/ArtisanSignup";
 import ConsumerSignup from "./pages/ConsumerSignup";
+import OurArtisans from "./pages/OurArtisans";
 import "./styles/App.css";
 
 const getUserRole = () => {
@@ -40,8 +41,10 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/our-artisans" element={<OurArtisans />} />
         <Route path="/ArtisanSignup" element={<ArtisanSignup />} />
         <Route path="/ConsumerSignup" element={<ConsumerSignup />} />
+        <Route path="Events" element={<Events />} />
 
         {/* Protected Routes for Artisans inside ArtisanLayout */}
         <Route element={<PrivateRoute allowedRoles={["Artisan"]} />}>
@@ -62,7 +65,6 @@ function App() {
             <Route path="ConsumerHome" element={<ConsumerHome />} />
             <Route path="ConsumerCourses" element={<ConsumerCourses />} />
             <Route path="Cart" element={<Cart />} />
-            <Route path="Events" element={<Events />} />
             <Route path="Shop" element={<Shop />} />
             <Route path="ViewCourse/:courseId" element={<CourseView />} />
             <Route path="buyproduct/:productId" element={<BuyProduct />} />

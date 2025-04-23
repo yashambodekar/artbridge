@@ -31,7 +31,7 @@ const Home = () => {
           <div className="nav-tabs">
             <button className="nav-tab active" onClick={() => navigate("/")}>Home</button>
             <button className="nav-tab" onClick={() => navigate("/our-artisans")}>Meet Our Artisans</button>
-            <button className="nav-tab" onClick={() => navigate("/events")}>Art Events</button>
+            <button className="nav-tab" onClick={() => navigate("/Events")}>Art Events</button>
           </div>
         </div>
         <div className="navbar-right">

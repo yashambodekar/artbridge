@@ -11,7 +11,6 @@ const UserSchema = new mongoose.Schema({
     soldProducts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
     soldCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
     purchasedCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Course" }],
-    
 });
 
 module.exports = mongoose.models.User || mongoose.model("User", UserSchema);

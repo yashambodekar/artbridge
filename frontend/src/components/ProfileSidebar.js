@@ -73,7 +73,7 @@ const ProfileSidebar = ({ isOpen, onClose }) => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     onClose();
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const handleCourseClick = (courseId) => {

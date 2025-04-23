@@ -1,5 +1,7 @@
 // controllers/userController.js
 const User = require("../models/user");
+const Product = require("../models/Product");
+const Course = require("../models/Course");
 
 // GET /me - Fetch user profile
 const getMe = async (req, res) => {
@@ -39,20 +41,35 @@ const updateProfile = async (req, res) => {
   }
 };
 
-// const getAllProducts = async (req, res) => {
-//   try {
-//     const products = await Product.find().populate("artisan", "name");
-//     res.json(products);
-//   } catch (err) {
-//     console.error("Error fetching products:", err);
-//     res.status(500).json({ message: "Server error" });
-//   }
-// };
+const getAllArtisans = async (req, res) => {
+  try {
+    const artisans = await User.find({ role: "Artisan" }).select("name profilePicture");
+
+    const artisanData = await Promise.all(
+      artisans.map(async (artisan) => {
+        const productCount = await Product.countDocuments({ artisan: artisan._id });
+        const courseCount = await Course.countDocuments({ artisan: artisan._id });
+
+        return {
+          id: artisan._id,
+          name: artisan.name,
+          profilePicture: artisan.profilePicture,
+          productCount,
+          courseCount,
+        };
+      })
+    );
+
+    res.status(200).json(artisanData);
+  } catch (error) {
+    console.error("Error fetching artisans:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 module.exports = {
   getMe,
   updateProfile,
-  // getAllProducts,
-  
-
+  getAllArtisans,
 };
 

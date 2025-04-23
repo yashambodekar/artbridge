@@ -4,12 +4,12 @@ const  { protect } = require("../middleware/authMiddleware");
 const {
   getMe,
   updateProfile,
-  // getPurchasedCourses,
-  // getSoldCoursesWithConsumers
+  getAllArtisans,
 } = require("../controllers/userController");
 
 router.get("/me", protect, getMe);
 router.put("/update", protect, updateProfile);
+router.get("/artisans", getAllArtisans);
 // k,
 
 module.exports = router;

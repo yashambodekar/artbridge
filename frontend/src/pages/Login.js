@@ -81,9 +81,9 @@ const Login = () => {
           
           <p className="auth-redirect">
             Don't have an account?{" "}
-            <span onClick={() => navigate("/consumer-registration")}>Register as Consumer</span>
+            <span onClick={() => navigate("/ConsumerSignup")}>Register as Consumer</span>
             {" or "}
-            <span onClick={() => navigate("/artisan-registration")}>Register as Artisan</span>
+            <span onClick={() => navigate("/ArtisanSignup")}>Register as Artisan</span>
           </p>
         </div>
       </div>
