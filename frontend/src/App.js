@@ -4,25 +4,24 @@ import PrivateRoute from "./components/PrivateRoute";
 import ArtisanHome from "./pages/Artisan/ArtisanHome";
 import ConsumerHome from "./pages/Consumer/ConsumerHome";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import Sell from "./pages/Artisan/Sell";
 import Courses from "./pages/Artisan/Courses";
 import AddCourse from "./pages/Artisan/AddCourse";
 import AddProduct from "./pages/Artisan/AddProduct";
 import ConsumerCourses from "./pages/Consumer/ConsumerCourses";
-import ConsumerProfile from "./pages/Consumer/ConsumerProfile";
 import Cart from "./pages/Consumer/Cart";
 import Events from "./pages/Consumer/Events";
 import Shop from "./pages/Consumer/Shop";
 import ArtisanLayout from "./pages/Artisan/ArtisanLayout";
 import ConsumerLayout from "./pages/Consumer/ConsumerLayout";
-import Payment from "./pages/Consumer/Payment";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import CourseManage from "./pages/Artisan/CourseManage";
 import CourseView from "./pages/Consumer/CourseView";
 import BuyProduct from "./pages/Consumer/BuyProduct";
 import ProductConsumers from "./pages/Artisan/productConsumer";
+import ArtisanSignup from "./pages/ArtisanSignup";
+import ConsumerSignup from "./pages/ConsumerSignup";
 import "./styles/App.css";
 
 const getUserRole = () => {
@@ -41,7 +40,8 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
+        <Route path="/ArtisanSignup" element={<ArtisanSignup />} />
+        <Route path="/ConsumerSignup" element={<ConsumerSignup />} />
 
         {/* Protected Routes for Artisans inside ArtisanLayout */}
         <Route element={<PrivateRoute allowedRoles={["Artisan"]} />}>
@@ -64,8 +64,6 @@ function App() {
             <Route path="Cart" element={<Cart />} />
             <Route path="Events" element={<Events />} />
             <Route path="Shop" element={<Shop />} />
-            <Route path="Payment" element={<Payment />} />
-            <Route path="ConsumerProfile" element={<ConsumerProfile />} />
             <Route path="ViewCourse/:courseId" element={<CourseView />} />
             <Route path="buyproduct/:productId" element={<BuyProduct />} />
           </Route>

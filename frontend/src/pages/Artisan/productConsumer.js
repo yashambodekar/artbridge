@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "./../../styles/ProductConsumer.css"; 
 import axios from "axios";
 
 const ProductConsumers = () => {

@@ -1,101 +1,151 @@
+/* Courses.css */
 .courses-container {
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #000000;
+  color: #ffffff;
+  min-height: 100vh;
 }
 
 .courses-container h1 {
-  font-size: 2.2rem;
-  color:linear-gradient(to right, #ff4e50, #f9d423);
-  margin-bottom: 20px;
-  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #9b87f5 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(196, 46, 151, 0.3);
 }
 
-/* Add new course button */
 .new-course-btn {
-  display: inline-block;
-  background: linear-gradient(to right, #ff4e50, #f9d423);
+  align-self: flex-start;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, #7e69ab 0%, #d946ef 100%);
+  border: none;
+  border-radius: 50px;
   color: white;
-  padding: 10px 25px;
-  border-radius: 30px;
-  text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 30px;
-  transition: background 0.3s ease, transform 0.2s ease;
+  /* font-size: 1rem; */
+  cursor: pointer;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(123, 105, 171, 0.3);
+  /* display: inline-block; */
 }
 
 .new-course-btn:hover {
-  background: #e94e77;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 70, 239, 0.4);
 }
 
-/* Course list grid */
+.error {
+  color: #ff6b6b;
+  margin: 1rem 0;
+}
+
 .courses-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
-/* Individual course card */
 .course-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(255, 78, 80, 0.2);
-  padding: 20px;
-  transition: transform 0.3s ease;
-  border: 2px solid transparent;
+  background-color: rgba(20, 20, 20, 0.8);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .course-card:hover {
-  transform: translateY(-5px);
-  border-color: #f9d423;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(155, 135, 245, 0.3);
 }
 
 .course-image {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
 }
 
 .course-card h3 {
-  margin: 10px 0 5px;
-  color: linear-gradient(to right, #ff4e50, #f9d423);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  padding: 1rem 1rem 0.5rem;
+  color: #ffffff;
 }
 
 .course-card p {
+  padding: 0 1rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
   font-size: 0.95rem;
-  margin-bottom: 8px;
-  color: #555;
 }
 
-/* Delete button */
-.delete-btn {
-  background: linear-gradient(to right, #ff4e50, #f9d423);
-  color: white;
+.course-card p:nth-of-type(2) {
+  font-weight: 700;
+  background: linear-gradient(90deg, #9b87f5 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* .course-buttons {
+  display: flex;
+  margin-top: 1rem;
+} */
+
+.course-buttons button {
+  width: 100%;
+  padding: 0.75rem;
   border: none;
-  padding: 8px 18px;
-  border-radius: 20px;
+  background-color: rgba(30, 30, 30, 0.8);
+  color: #ffffff;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
 }
 
-.delete-btn:hover {
-  background: #d7385e;
+.course-buttons button:hover {
+  background-color: rgba(155, 135, 245, 0.3);
 }
 
-/* Error or info message */
-.error,
-.courses-container p {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1rem;
-  color: #e94e77;
+.course-buttons .delete-btn {
+  background-color: rgba(255, 107, 107, 0.2);
+}
+
+.course-buttons .delete-btn:hover {
+  background-color: rgba(255, 107, 107, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .courses-container {
+    padding: 1.5rem;
+  }
+
+  .courses-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-container {
+    padding: 1rem;
+  }
+
+  .courses-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-container h1 {
+    font-size: 2rem;
+  }
 }

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/Auth.css"; // Shared CSS for Login & Signup
+import "./../styles/Auth.css";
+import ArtbridgeImage from './../assets/ArtBridge.jpeg';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -46,30 +47,46 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
-      <p>
-        Don't have an account?{" "}
-        <span onClick={() => navigate("/Signup")}>Sign up</span>
-      </p>
+      <div className="auth-form-box">
+        <div className="auth-illustration">
+        <img src={ArtbridgeImage} alt="Artbridge" />
+        </div>
+        <div className="auth-form-content">
+          <h2 className="auth-title">Welcome Back</h2>
+          <p className="auth-subtitle">Sign in to your account</p>
+          
+          <form onSubmit={handleLogin} className="auth-form">
+            <div className="form-group">
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="auth-button" disabled={loading}>
+              {loading ? "Logging in..." : "Login"}
+            </button>
+          </form>
+          
+          <p className="auth-redirect">
+            Don't have an account?{" "}
+            <span onClick={() => navigate("/consumer-registration")}>Register as Consumer</span>
+            {" or "}
+            <span onClick={() => navigate("/artisan-registration")}>Register as Artisan</span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

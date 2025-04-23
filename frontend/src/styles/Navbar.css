@@ -1,23 +1,25 @@
 /* Navbar container */
 .navbar {
-  background: linear-gradient(135deg, #ff4e50, #f9d423);
-  padding: 15px 30px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 4px 10px rgba(255, 78, 80, 0.1);
+  align-items: center;
+  padding: 1.5rem 4rem;
+  background-color: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
-  z-index: 1000;
-}
+  z-index: 100;
+  border-bottom: 1px solid rgba(178, 160, 160, 0.1);
+} 
+
 
 /* Brand name */
 .nav-brand a {
   font-size: 1.8rem;
   font-weight: 700;
   text-decoration: none;
-  color: #f9fbb8;
+  color: linear-gradient(90deg, #9b87f5 0%, #D946EF 100%);
+  text-shadow: 0 0 30px rgba(196, 46, 151, 0.5);
 }
 
 /* Links list */
@@ -25,6 +27,7 @@
   list-style: none;
   display: flex;
   gap: 30px;
+  align-items: center;
 }
 
 /* Each nav item */
@@ -32,21 +35,25 @@
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
-  color: #e94e77;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: all 0.3s ease-in-out;
+  color:  #e0e0e0;;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  background-color: transparent;
 }
 
 /* Hover effect */
 .nav-links li a:hover {
-  background: linear-gradient(to right, #ff4e50, #f9d423);
-  color: white;
-  box-shadow: 0 4px 12px rgba(255, 78, 80, 0.3);
+  background:  linear-gradient(90deg, #9b87f5 0%, #D946EF 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(109, 31, 77, 0.4);
+  transform: translateY(-1px);
 }
 
-/* Active/Selected state - optional if you're using NavLink */
+/* Active/Selected state */
 .nav-links li a.active {
-  background: #ff4e50;
-  color: white;
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 65, 108, 0.5);
 }

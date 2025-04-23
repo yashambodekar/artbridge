@@ -1,50 +1,110 @@
+/* Events.css */
 .events-container {
-  text-align: center;
-  padding: 50px;
-  background: #fffbf0;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #000000;
+  color: #ffffff;
+  min-height: 100vh;
 }
 
-h1 {
-  color: #d35d6e;
+.events-container h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #9b87f5 0%, #d946ef 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(196, 46, 151, 0.3);
 }
 
 .events-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .event-card {
-  background: #ffe4d5;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  text-align: left;
+  background-color: rgba(20, 20, 20, 0.8);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-h2 {
-  color: #b84c5a;
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(155, 135, 245, 0.3);
 }
 
-p {
-  color: #333;
-  font-size: 1rem;
-  margin: 5px 0;
+.event-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.event-card p {
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.event-card p:last-of-type {
+  margin-bottom: 2rem;
 }
 
 .enroll-btn {
-  background: #d35d6e;
-  color: white;
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(90deg, #7e69ab 0%, #d946ef 100%);
   border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 14px;
-  margin-top: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(123, 105, 171, 0.3);
+  align-self: flex-start;
 }
 
 .enroll-btn:hover {
-  background: #b84c5a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 70, 239, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .events-container {
+    padding: 1.5rem;
+  }
+
+  .events-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .events-container {
+    padding: 1rem;
+  }
+
+  .events-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .events-container h1 {
+    font-size: 2rem;
+  }
+
+  .event-card h2 {
+    font-size: 1.5rem;
+  }
 }
