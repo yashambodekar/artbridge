@@ -37,7 +37,7 @@ const AddProduct = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/products/add", {
+      const response = await fetch("https://artisans-bridge.onrender.com/api/products/add", {
         method: "POST",
         body: formData,
         headers: {
