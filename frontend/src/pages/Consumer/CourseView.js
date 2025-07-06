@@ -15,11 +15,11 @@ const CourseView = () => {
     const fetchCourseData = async () => {
       try {
         // Fetch course content
-        const contentRes = await axios.get(`http://localhost:5000/api/coursecontent/public/${courseId}`);
+        const contentRes = await axios.get(`https://artisans-bridge.onrender.com/api/coursecontent/public/${courseId}`);
         setContentList(contentRes.data);
 
         // Fetch assignments
-        const assignmentsRes = await axios.get(`http://localhost:5000/api/assignments/${courseId}/assignments`, {
+        const assignmentsRes = await axios.get(`https://artisans-bridge.onrender.com/api/assignments/${courseId}/assignments`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setAssignments(assignmentsRes.data);
@@ -42,7 +42,7 @@ const CourseView = () => {
     formData.append("file", submissionFile);
 
     try {
-      await axios.post(`http://localhost:5000/api/submissions/submit/${selectedAssignment}`, formData, {
+      await axios.post(`https://artisans-bridge.onrender.com/api/submissions/submit/${selectedAssignment}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Assignment submitted successfully!");
@@ -63,7 +63,7 @@ const CourseView = () => {
             <h3>{content.name}</h3>
             <p>{content.description}</p>
             {content.files.map((file, index) => (
-              <a key={index} href={`http://localhost:5000/${file}`} target="_blank" rel="noreferrer">
+              <a key={index} href={`https://artisans-bridge.onrender.com/${file}`} target="_blank" rel="noreferrer">
                 {file.split("/").pop()}
               </a>
             ))}
@@ -78,7 +78,7 @@ const CourseView = () => {
             <h3>{assignment.title}</h3>
             <p>{assignment.description}</p>
             <p>Deadline: {new Date(assignment.deadline).toLocaleString()}</p>
-            <a href={`http://localhost:5000/${assignment.file}`} target="_blank" rel="noreferrer">
+            <a href={`https://artisans-bridge.onrender.com/${assignment.file}`} target="_blank" rel="noreferrer">
               {assignment.file.split("/").pop()}
             </a>
             <button onClick={() => setSelectedAssignment(assignment._id)}>Submit Assignment</button>
