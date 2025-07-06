@@ -10,7 +10,7 @@ const Cart = () => {
   const fetchCart = async () => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.get("http://localhost:5000/api/cart", {
+      const res = await axios.get("https://artisans-bridge.onrender.com/api/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (res.data && res.data.products) {
@@ -29,7 +29,7 @@ const Cart = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/cart/remove",
+        "https://artisans-bridge.onrender.com/api/cart/remove",
         { productId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -61,7 +61,7 @@ const Cart = () => {
             {cartItems.map(({ product, quantity }) => (
               <div key={product._id} className="cart-item">
                 <img
-                  src={`http://localhost:5000/${product.image}`}
+                  src={`https://artisans-bridge.onrender.com/${product.image}`}
                   alt={product.name}
                   className="cart-image"
                 />

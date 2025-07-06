@@ -25,7 +25,7 @@ const ManageCourse = () => {
   // Fetch course content
   const fetchContent = useCallback(async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/coursecontent/public/${courseId}`, {
+      const res = await fetch(`https://artisans-bridge.onrender.com/api/coursecontent/public/${courseId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -44,7 +44,7 @@ const ManageCourse = () => {
   // Fetch assignments
   const fetchAssignments = useCallback(async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/assignments/${courseId}/assignments`, {
+      const res = await fetch(`https://artisans-bridge.onrender.com/api/assignments/${courseId}/assignments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -57,7 +57,7 @@ const ManageCourse = () => {
   // Fetch submissions for an assignment
   const fetchSubmissions = async (assignmentId) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/assignments/${assignmentId}/submissions`, {
+      const res = await fetch(`https://artisans-bridge.onrender.com/api/assignments/${assignmentId}/submissions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -84,7 +84,7 @@ const ManageCourse = () => {
     formData.append("description", contentDescription);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/coursecontent/${courseId}`, {
+      const res = await fetch(`https://artisans-bridge.onrender.com/api/coursecontent/${courseId}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -114,7 +114,7 @@ const ManageCourse = () => {
     formData.append("deadline", deadline);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/assignments/${courseId}`, {
+      const res = await fetch(`https://artisans-bridge.onrender.com/api/assignments/${courseId}`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -139,7 +139,7 @@ const ManageCourse = () => {
   const handleDeleteAssignment = async (id) => {
     if (!window.confirm("Delete this assignment?")) return;
     try {
-      await fetch(`http://localhost:5000/api/assignments/${id}`, {
+      await fetch(`https://artisans-bridge.onrender.com/api/assignments/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

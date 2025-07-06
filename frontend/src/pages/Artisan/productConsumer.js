@@ -12,7 +12,7 @@ const ProductConsumers = () => {
     const fetchConsumers = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get(`http://localhost:5000/api/products/${productId}/consumers`, {
+        const res = await axios.get(`https://artisans-bridge.onrender.com/api/products/${productId}/consumers`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setConsumers(res.data);

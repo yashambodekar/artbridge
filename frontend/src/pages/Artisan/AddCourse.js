@@ -37,7 +37,7 @@ const AddCourse = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/courses/", {
+      const response = await fetch("https://artisans-bridge.onrender.com/api/courses/add", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,

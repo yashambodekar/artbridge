@@ -7,7 +7,7 @@ const Shop = () => {
 
   useEffect(() => {
     // Fetch products from backend API
-    axios.get("http://localhost:5000/api/products/AllProducts")
+    axios.get("https://artisans-bridge.onrender.com/api/products/AllProducts")
       .then(response => setProducts(response.data))
       .catch(error => console.error("Error fetching products:", error));
   }, []);
@@ -15,7 +15,7 @@ const Shop = () => {
   const addToCart = async (product) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.post("http://localhost:5000/api/cart/add", 
+      const res = await axios.post("https://artisans-bridge.onrender.com/api/cart/add", 
         { productId: product._id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -34,7 +34,7 @@ const Shop = () => {
           products.map((product) => (
             <div key={product._id} className="product-card">
               <img
-               src={product.image ? `http://localhost:5000/${product.image}` : "https://via.placeholder.com/150"}
+               src={product.image ? `https://artisans-bridge.onrender.com/${product.image}` : "https://via.placeholder.com/150"}
                alt={product.name}
                className="product-image"
               />
