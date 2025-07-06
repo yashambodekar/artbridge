@@ -14,7 +14,7 @@ const ArtisanHome = () => {
     const fetchStats = async () => {
       try {
         const token = localStorage.getItem("token"); // Get the token from localStorage
-        const res = await axios.get("http://localhost:5000/api/users/artisan/stats", {
+        const res = await axios.get("https://artisans-bridge.onrender.com/api/users/artisan/stats", {
           headers: {
             Authorization: `Bearer ${token}`, // Add the token to the Authorization header
           },
