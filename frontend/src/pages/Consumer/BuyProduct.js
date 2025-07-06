@@ -26,7 +26,7 @@ const BuyProduct = () => {
   React.useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/products/${productId}/price`);
+        const res = await axios.get(`https://artisans-bridge.onrender.com/api/products/${productId}/price`);
         setPrice(res.data.price); // Assuming the backend returns the product price
       } catch (err) {
         console.error("Failed to fetch product details:", err);
@@ -90,7 +90,7 @@ const BuyProduct = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/api/products/buy",
+        "https://artisans-bridge.onrender.com/api/products/buy",
         { productId, name, email, contact, address, quantity, totalPrice }, // Include quantity and totalPrice
         { headers: { Authorization: `Bearer ${token}` } }
       );
