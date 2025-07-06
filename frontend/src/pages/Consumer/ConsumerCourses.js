@@ -17,11 +17,11 @@ const ConsumerCourses = () => {
         const token = localStorage.getItem("token");
 
         // Fetch all available courses
-        const availableCoursesRes = await axios.get("http://localhost:5000/api/courses/AllCourses");
+        const availableCoursesRes = await axios.get("https://artisans-bridge.onrender.com/api/courses/AllCourses");
         setCourses(availableCoursesRes.data);
 
         // Fetch purchased courses
-        const purchasedCoursesRes = await axios.get("http://localhost:5000/api/courses/purchased", {
+        const purchasedCoursesRes = await axios.get("https://artisans-bridge.onrender.com/api/courses/purchased", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setPurchasedCourses(purchasedCoursesRes.data);
@@ -52,13 +52,13 @@ const ConsumerCourses = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.post(`http://localhost:5000/api/courses/buy/${courseId}`, {}, {
+      const res = await axios.post(`https://artisans-bridge.onrender.com/api/courses/buy/${courseId}`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       alert("Purchase successful!");
       // Refresh purchased courses after buying
-      const purchasedCoursesRes = await axios.get("http://localhost:5000/api/courses/purchased", {
+      const purchasedCoursesRes = await axios.get("https://artisans-bridge.onrender.com/api/courses/purchased", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPurchasedCourses(purchasedCoursesRes.data);
@@ -80,7 +80,7 @@ const ConsumerCourses = () => {
         {courses.map((course) => (
           <div key={course._id} className="course-card">
             <img
-              src={course.image ? `http://localhost:5000/${course.image}` : "https://via.placeholder.com/150"}
+              src={course.image ? `https://artisans-bridge.onrender.com/${course.image}` : "https://via.placeholder.com/150"}
               alt={course.name}
               className="course-image"
             />
@@ -103,7 +103,7 @@ const ConsumerCourses = () => {
         {purchasedCourses.map((course) => (
           <div key={course._id} className="course-card">
             <img
-              src={course.image ? `http://localhost:5000/${course.image}` : "https://via.placeholder.com/150"}
+              src={course.image ? `https://artisans-bridge.onrender.com/${course.image}` : "https://via.placeholder.com/150"}
               alt={course.name}
               className="course-image"
             />
