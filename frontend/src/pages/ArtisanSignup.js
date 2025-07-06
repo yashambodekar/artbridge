@@ -22,7 +22,7 @@ const ArtisanSignup = () => {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await axios.post("https://artisans-bridge.onrender.com/api/auth/register", {
         role: "Artisan",
         name,
         email,
