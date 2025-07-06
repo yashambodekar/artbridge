@@ -5,7 +5,6 @@ const upload = require("../middleware/uploadMiddleware");
 
 const {
   createAssignment,
-  updateAssignment,
   deleteAssignment,
   getAssignmentsForCourse,
   getSubmissionsForAssignment,
@@ -13,9 +12,6 @@ const {
 
 // ✅ Upload a new assignment (with file and deadline)
 router.post("/:courseId", protect, upload.single("file"), createAssignment);
-
-// ✅ Update assignment (file is optional)
-router.put("/:assignmentId", protect, upload.single("file"), updateAssignment);
 
 // ✅ Delete assignment
 router.delete("/:assignmentId", protect, deleteAssignment);

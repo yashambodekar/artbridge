@@ -37,7 +37,7 @@ const AddCourse = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/courses/add", {
+      const response = await fetch("http://localhost:5000/api/courses/", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,

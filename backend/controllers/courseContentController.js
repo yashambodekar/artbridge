@@ -57,37 +57,6 @@ exports.getAllContentsForCourse = async (req, res) => {
   }
 };
 
-// Update course content
-exports.updateCourseContent = async (req, res) => {
-  try {
-    const { contentId } = req.params;
-    const { name, description } = req.body;
-    const newFiles = req.files?.map((file) => file.path);
-
-    const courseContent = await CourseContent.findById(contentId);
-    if (!courseContent) {
-      return res.status(404).json({ message: "Course content not found" });
-    }
-
-    // Check if the user is the uploader
-    if (courseContent.uploadedBy.toString() !== req.user._id.toString()) {
-      return res.status(403).json({ message: "Unauthorized" });
-    }
-
-    // Update fields
-    courseContent.name = name || courseContent.name;
-    courseContent.description = description || courseContent.description;
-    courseContent.files = newFiles || courseContent.files;
-    courseContent.lastUpdated = Date.now();
-
-    await courseContent.save();
-    res.json(courseContent);
-  } catch (error) {
-    console.error("Update course content error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
 // Delete course content
 exports.deleteCourseContent = async (req, res) => {
   try {

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { protect } = require("../middleware/authMiddleware");
+const upload = require("../middleware/uploadMiddleware");
 const mongoose = require("mongoose");
 const {
   addCourse,
@@ -30,13 +31,13 @@ router.get("/my", protect, getMyCourses);
 router.get("/AllCourses", getAllCourses);
 
 // ✅ Add a new course
-router.post("/", protect, addCourse);
+router.post("/", protect,upload.single("image"), addCourse);
 
 // ✅ Buy a course
 router.post("/buy/:courseId", protect, buyCourse);
 
 // ✅ Delete a course
-router.delete("/:id", protect, deleteCourse);
+router.delete("/:id", protect,upload.single("image"), deleteCourse);
 
 // ✅ Get course by ID (must be the last route to avoid conflicts)
 router.get("/:id", validateObjectId, getCourseById);

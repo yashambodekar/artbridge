@@ -22,7 +22,7 @@ const Events = () => {
         "An exhibition featuring renowned artists from India and abroad, showcasing a diverse range of artworks.",
       location: "Balgandharva Rangmandir, Pune",
       dates: "March 10–15, 2025",
-      enrollmentLink: "https://automation.in.net", // Placeholder link
+      enrollmentLink: "https://www.instagram.com/pune_art_festival/?hl=en", // Placeholder link
     },
     {
       id: 3,

@@ -77,9 +77,9 @@ const ManageCourse = () => {
   const handleContentUpload = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    for (let file of files) {
+    Array.from(files).forEach((file) => {
       formData.append("files", file);
-    }
+    });
     formData.append("name", contentName);
     formData.append("description", contentDescription);
 
@@ -152,6 +152,21 @@ const ManageCourse = () => {
       console.error("Error deleting assignment", err);
     }
   };
+
+
+  // Handle Content Deletion
+  const handleDeleteContent = async (id) => {
+    if (!window.confirm("Delete this content?")) return;
+    try {
+      await fetch(`http://localhost:5000/api/coursecontent/${id}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      fetchContent();
+    } catch (err) {
+      console.error("Error deleting content", err);
+    }
+  }
 
   return (
     <div className="manage-container">
@@ -232,6 +247,12 @@ const ManageCourse = () => {
                   <li key={item._id} className="content-item">
                     <div className="content-header">
                       <h4>{item.name}</h4>
+                      <button 
+                          className="delete-btn"
+                          onClick={() => handleDeleteContent(item._id)}
+                        >
+                          Delete
+                          </button>
                     </div>
                     <p className="content-description">{item.description}</p>
                     <div className="content-files">

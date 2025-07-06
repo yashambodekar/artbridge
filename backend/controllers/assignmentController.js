@@ -28,29 +28,6 @@ exports.createAssignment = async (req, res) => {
   }
 };
 
-// ✅ PUT /api/assignments/:assignmentId → Update assignment
-exports.updateAssignment = async (req, res) => {
-  try {
-    const { assignmentId } = req.params;
-    const { title, description, deadline } = req.body;
-    const file = req.file?.path;
-
-    const updateFields = { title, description, deadline };
-    if (file) updateFields.file = file;
-
-    const assignment = await Assignment.findByIdAndUpdate(assignmentId, updateFields, { new: true });
-
-    if (!assignment) {
-      return res.status(404).json({ message: "Assignment not found" });
-    }
-
-    res.json(assignment);
-  } catch (error) {
-    console.error("Update assignment error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
-
 // ✅ DELETE /api/assignments/:assignmentId → Delete assignment
 exports.deleteAssignment = async (req, res) => {
   try {

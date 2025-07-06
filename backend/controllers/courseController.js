@@ -1,6 +1,7 @@
 const Course = require("../models/Course");
 const User = require("../models/user");
 
+
 // Add a new course
 exports.addCourse = async (req, res) => {
   try {
