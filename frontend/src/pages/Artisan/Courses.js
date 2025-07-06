@@ -17,7 +17,7 @@ const Courses = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5000/api/courses/my", {
+      const response = await fetch("https://artisans-bridge.onrender.com/api/courses/my", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const Courses = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/courses/delete/${courseId}`, {
+      const response = await fetch(`https://artisans-bridge.onrender.com/api/courses/delete/${courseId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
