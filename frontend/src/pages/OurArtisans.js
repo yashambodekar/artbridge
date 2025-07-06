@@ -10,7 +10,7 @@ const OurArtisans = () => {
   useEffect(() => {
     const fetchArtisans = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/users/artisans");
+        const res = await axios.get("https://artisans-bridge.onrender.com/api/users/artisans");
         setArtisans(res.data);
       } catch (error) {
         console.error("Error fetching artisans:", error);
