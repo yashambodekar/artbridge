@@ -18,7 +18,7 @@ const Sell = () => {
           return;
         }
 
-        const response = await fetch("http://localhost:5000/api/products/my-products", {
+        const response = await fetch("https://artisans-bridge.onrender.com/api/products/my-products", {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${token}`, // 🔥 Send token for authentication
@@ -49,7 +49,7 @@ const Sell = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`http://localhost:5000/api/products/delete/${productId}`, {
+      const response = await fetch(`https://artisans-bridge.onrender.com/api/products/delete/${productId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
