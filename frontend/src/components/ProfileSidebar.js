@@ -10,7 +10,7 @@ const ProfileSidebar = ({ isOpen, onClose }) => {
 
     const fetchProfile = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/users/me", {
+        const res = await fetch("https://artisans-bridge.onrender.com/api/users/me", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
